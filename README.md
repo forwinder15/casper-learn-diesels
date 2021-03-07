@@ -1,22 +1,4 @@
-# gatsby-casper
-
-Demo: https://gatsby-casper.netlify.app
-
-This is a static blog generator and starter gatsby repo. A port of [Casper](https://github.com/TryGhost/Casper) v3 a theme from [Ghost](https://ghost.org/) for [GatsbyJS](https://www.gatsbyjs.org/) using [TypeScript](https://www.typescriptlang.org/).
-
-## Getting Started
-
-Clone this repo.
-
-```
-git clone https://github.com/scttcper/gatsby-casper.git --depth=1
-```
-
-Remove .git folder and setup a new one
-
-```
-rm -rf .git && git init
-```
+````
 
 Edit website-config.ts with your website settings.
 Either disable subscribe or setup a mailchimp list and add the form action and hidden field input name.
@@ -41,9 +23,7 @@ Now push to whatever repo you want!
   - [x] page titles
   - [ ] pagination
 
-### Deploy to Netlify
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/scttcper/gatsby-casper)
 
 ## How to configure Google Analytics
 
@@ -69,7 +49,7 @@ Edit `gatsby-config.js` and add your tracking ID
       siteSpeedSampleRate: 10,
     },
 },
-```
+````
 
 ## How to edit your site title and description
 
