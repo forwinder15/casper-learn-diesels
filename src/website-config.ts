@@ -52,7 +52,7 @@ const config: WebsiteConfig = {
   title: 'Learn Diesels',
   description: 'The professional Diesel Site',
   coverImage: 'img/blog-cover.png',
-  logo: 'img/ghost-logo.png',
+  logo: 'img/avatar1.jpg',
   lang: 'en',
   siteUrl: 'https://casperlearndieselsmain.gatsbyjs.io/',
   facebook: 'https://www.facebook.com/',
