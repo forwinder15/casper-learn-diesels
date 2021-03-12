@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { FluidObject } from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Footer } from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
@@ -49,7 +49,7 @@ interface AuthorTemplateProps {
       location?: string;
       profile_image?: {
         childImageSharp: {
-          fluid: FluidObject;
+          fluid: FluidObject; 
         };
       };
       bio?: string;
@@ -120,16 +120,16 @@ const Author = ({ data, location }: AuthorTemplateProps) => {
           </div>
 
           <ResponsiveHeaderBackground
-            backgroundImage={author.profile_image?.childImageSharp.fluid.src}
+            backgroundImage={author.profile_image?.childImageSharp?.gatsbyImageData.src}
             css={[outer, SiteHeaderBackground]}
             className="site-header-background"
           >
             <div css={inner}>
               <SiteHeaderContent css={AuthorHeader} className="site-header-content author-header">
-                <img
+                <GatsbyImage
                   style={{ marginTop: '8px' }}
                   css={[AuthorProfileImage, AuthorProfileBioImage]}
-                  src={data.authorYaml.avatar.childImageSharp.fluid.src}
+                  image={data.authorYaml.avatar.childImageSharp.gatsbyImageData.src}
                   alt={author.id}
                 />
                 <AuthHeaderContent className="author-header-content">
@@ -200,74 +200,68 @@ const Author = ({ data, location }: AuthorTemplateProps) => {
   );
 };
 
-export const pageQuery = graphql`
-  query($author: String) {
-    authorYaml(id: { eq: $author }) {
-      id
-      website
-      twitter
-      bio
-      facebook
-      location
-      profile_image {
-        childImageSharp {
-          fluid(maxWidth: 3720) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      avatar {
-        childImageSharp {
-          fluid(quality: 100, srcSetBreakpoints: [40, 80, 120]) {
-            ...GatsbyImageSharpFluid
-          }
-        }
+export const pageQuery = graphql`query ($author: String) {
+  authorYaml(id: {eq: $author}) {
+    id
+    website
+    twitter
+    bio
+    facebook
+    location
+    profile_image {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
-    allMarkdownRemark(
-      filter: { frontmatter: { draft: { ne: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 2000
-    ) {
-      edges {
-        node {
+    avatar {
+      childImageSharp {
+        gatsbyImageData(
+          quality: 100
+          breakpoints: [40, 80, 120]
+          layout: FULL_WIDTH
+        )
+      }
+    }
+  }
+  allMarkdownRemark(
+    filter: {frontmatter: {draft: {ne: true}}}
+    sort: {fields: [frontmatter___date], order: DESC}
+    limit: 2000
+  ) {
+    edges {
+      node {
+        excerpt
+        timeToRead
+        frontmatter {
+          title
           excerpt
-          timeToRead
-          frontmatter {
-            title
-            excerpt
-            tags
-            date
-            draft
-            image {
-              childImageSharp {
-                fluid(maxWidth: 3720) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            author {
-              id
-              bio
-              avatar {
-                children {
-                  ... on ImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
+          tags
+          date
+          draft
+          image {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
-          fields {
-            layout
-            slug
+          author {
+            id
+            bio
+            avatar {
+                     childImageSharp {
+                  gatsbyImageData
+                }
+              
+            }
           }
+        }
+        fields {
+          layout
+          slug
         }
       }
     }
   }
+}
 `;
 
 const HiddenMobile = css`

@@ -2,7 +2,7 @@
 layout: post
 title: A Full and Comprehensive Style Test
 image: img/testimg-cover.jpg
-author: [Ghost]
+author: [Johnathan Coker]
 date: 2018-09-30T07:03:47.149Z
 tags:
   - Tests
@@ -146,7 +146,7 @@ The <sub>sub element</sub> example <br>
 The <sup>sup element</sup> example <br>
 The <var>var element</var> example <br>
 The <u>u element</u> example</p>
-* * *
+** *
 
 ## Embeds
 

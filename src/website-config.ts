@@ -52,17 +52,19 @@ const config: WebsiteConfig = {
   title: 'Learn Diesels',
   description: 'The professional Diesel Site',
   coverImage: 'img/blog-cover.png',
-  logo: 'img/avatar1.jpg',
+  logo: 'img/ghost-logo.png',
   lang: 'en',
   siteUrl: 'https://casperlearndieselsmain.gatsbyjs.io/',
   facebook: 'https://www.facebook.com/',
   twitter: 'https://twitter.com/',
   showSubscribe: true,
-  mailchimpAction: 'https://twitter.us19.list-manage.com/subscribe/post?u=a89b6987ac248c81b0b7f3a0f&amp;id=7d777b7d75',
-  mailchimpName: 'b_a89b6987ac248c81b0b7f3a0f_7d777b7d75',
+  mailchimpAction: 'https://gmail.us20.list-manage.com/subscribe/post?u=aeb37d143f29bd50ed3c8977e&amp;id=47c8598fc5',
+  mailchimpName: 'b_aeb37d143f29bd50ed3c8977e_47c8598fc5',
   mailchimpEmailFieldName: 'MERGE0',
   googleSiteVerification: 'GoogleCode',
-  footer: 'Learn Diesels',
+  footer: 'Grease Monkeys Unite',
 };
+
+
 
 export default config;

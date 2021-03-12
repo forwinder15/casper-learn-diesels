@@ -3,22 +3,15 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Casper',
-    description: 'A port of the casper blog built for gatsby',
-    siteUrl: 'https://gatsby-casper.netlify.com', // full path to blog - no ending slash
+    title: 'Learn Diesels',
+    description: 'A blog all about diesel work, tools and mechanic help',
+    siteUrl: 'https://casperlearndieselsmain.gatsbyjs.io', // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
   },
   plugins: [
     'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        defaultQuality: 100,
-        stripMetadata: true,
-      },
-    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -59,7 +52,9 @@ module.exports = {
     },
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
+    'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
     'gatsby-plugin-feed',

@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as _ from 'lodash';
 import { lighten } from 'polished';
 import React, { useState } from 'react';
@@ -18,6 +18,7 @@ interface AuthorListItemProps {
 
 export const AuthorListItem: React.FC<AuthorListItemProps> = props => {
   const [hovered, setHover] = useState(false);
+  const image = getImage(props.author.avatar.childImageSharp)
   let timeout: ReturnType<typeof setTimeout>;
   function handleMouseEnter() {
     if (props.tooltip !== 'large') {
@@ -50,13 +51,13 @@ export const AuthorListItem: React.FC<AuthorListItemProps> = props => {
       )}
       {props.tooltip === 'large' && (
         <div css={[AuthorCardStyles, hovered && Hovered]} className="author-card">
-          {props.author.avatar.children.length && (
-            <Img
+          {props.author.avatar.length && (  
+            <GatsbyImage
+              image={image}
+              alt="Author Image"
               css={AuthorProfileImage}
               className="author-profile-image"
-              fluid={props.author.avatar.children[0].fluid}
-              fadeIn={false}
-            />
+               />
           )}
           <div className="author-info">
             <div className="bio">
@@ -75,13 +76,12 @@ export const AuthorListItem: React.FC<AuthorListItemProps> = props => {
         className="author-avatar"
         to={`/author/${_.kebabCase(props.author.id)}/`}
       >
-        <Img
+        <GatsbyImage
+          image={image}
           css={AuthorProfileImage}
           className="author-profile-image"
-          fluid={props.author.avatar.children[0].fluid}
           alt={props.author.id}
-          fadeIn={false}
-        />
+           />
       </Link>
     </AuthorListItemLi>
   );
